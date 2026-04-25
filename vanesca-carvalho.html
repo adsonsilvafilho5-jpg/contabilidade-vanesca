@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanesca Carvalho — Perícia e Contabilidade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #FAFAF8;
+      --cream-dark: #F0EBE3;
+      --gold: #8B6914;
+      --gold-light: #B8922A;
+      --gold-pale: #D4B064;
+      --brown-dark: #3A2810;
+      --brown-mid: #6B4E22;
+      --text: #2C2018;
+      --text-light: #6B5240;
+      --line: rgba(139, 105, 20, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 64px 40px 52px;
+      border-bottom: 1px solid var(--line);
+      background: var(--cream);
+      animation: fadeDown 1s ease both;
+    }
+
+    .logo-img {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 28px;
+    }
+
+    .header-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 22px;
+    }
+
+    .header-divider span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+    }
+
+    .header-divider .diamond {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .header-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    /* INTRO */
+    .intro {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 40px 52px;
+      text-align: center;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold-pale);
+    }
+
+    .intro-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--brown-dark);
+      margin-bottom: 26px;
+      letter-spacing: 0.01em;
+    }
+
+    .intro-text {
+      font-size: clamp(14px, 2vw, 16px);
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.95;
+      max-width: 580px;
+      margin: 0 auto;
+      letter-spacing: 0.02em;
+    }
+
+    /* SERVICES */
+    .services-section {
+      padding: 10px 40px 90px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 52px 46px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.35s ease;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .service-card:hover { background: var(--cream-dark); }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .service-card:hover::before { height: 100%; }
+
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      color: var(--gold-pale);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(21px, 2.5vw, 25px);
+      font-weight: 500;
+      color: var(--brown-dark);
+      line-height: 1.25;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .card-divider {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 18px;
+      transition: width 0.4s ease;
+    }
+
+    .service-card:hover .card-divider { width: 52px; }
+
+    .card-description {
+      font-size: clamp(13px, 1.5vw, 15px);
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.85;
+      letter-spacing: 0.02em;
+    }
+
+    .card-items {
+      margin-top: 20px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .card-items li {
+      font-size: clamp(12px, 1.5vw, 13px);
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .card-items li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* CLOSING */
+    .closing {
+      padding: 72px 40px 80px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      background: var(--cream-dark);
+    }
+
+    .closing-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown-dark);
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .closing-text {
+      font-size: clamp(11px, 2vw, 13px);
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      max-width: 400px;
+      margin: 0 auto 40px;
+    }
+
+    .closing-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .closing-line span {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-pale));
+    }
+
+    .closing-line span:last-child {
+      background: linear-gradient(90deg, var(--gold-pale), transparent);
+    }
+
+    .closing-line .diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .service-card:nth-child(4) { animation-delay: 0.4s; }
+    .service-card:nth-child(5) { animation-delay: 0.5s; }
+    .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @media (max-width: 640px) {
+      header { padding: 48px 24px 40px; }
+      .logo-img { width: 160px; }
+      .intro { padding: 52px 24px 40px; }
+      .services-section { padding: 10px 0 60px; }
+      .service-card { padding: 38px 28px; }
+      .closing { padding: 52px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <img src="Logo.png" alt="Vanesca Carvalho" class="logo-img">
+  <div class="header-divider">
+    <span></span><div class="diamond"></div><span></span>
+  </div>
+  <p class="header-subtitle">Assessoria contábil e tributária com excelência técnica e rigor profissional</p>
+</header>
+
+  <section class="intro">
+    <div class="section-label">Soluções Especializadas</div>
+    <h1 class="intro-heading">Expertise que transforma<br>complexidade em clareza</h1>
+    <p class="intro-text">
+      Com atuação focada nas áreas tributária, societária e de perícia, ofereço soluções contábeis precisas e personalizadas, alinhadas às necessidades estratégicas de cada cliente.
+    </p>
+  </section>
+
+  <section class="services-section">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="card-number">01</span>
+        <h2 class="card-title">Planejamento<br>Tributário</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Análise estratégica da carga tributária com foco na redução legal de impostos e conformidade fiscal plena.</p>
+        <ul class="card-items">
+          <li>Escolha e revisão do regime tributário</li>
+          <li>Análise de obrigações acessórias</li>
+          <li>Conformidade com SPED e ESOCIAL</li>
+          <li>Gestão de riscos fiscais</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="card-number">02</span>
+        <h2 class="card-title">Contabilidade<br>Societária</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Suporte completo no ciclo de vida societário das empresas, com segurança jurídica e assessoria especializada.</p>
+        <ul class="card-items">
+          <li>Abertura de empresas</li>
+          <li>Alterações contratuais e estatutárias</li>
+          <li>Transformação societária</li>
+          <li>Encerramento e baixa de CNPJ</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="card-number">03</span>
+        <h2 class="card-title">Recuperação de<br>Créditos Tributários</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Identificação e aproveitamento de créditos tributários com base em análise técnica aprofundada da legislação vigente.</p>
+        <ul class="card-items">
+          <li>Recuperação de PIS e COFINS</li>
+          <li>Créditos de ICMS</li>
+          <li>Revisão de apurações anteriores</li>
+          <li>Compensação e restituição tributária</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="card-number">04</span>
+        <h2 class="card-title">Perícia<br>Tributária</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Elaboração de laudos periciais e pareceres técnicos em matéria tributária para processos judiciais e administrativos.</p>
+        <ul class="card-items">
+          <li>Laudo pericial tributário</li>
+          <li>Parecer técnico-contábil</li>
+          <li>Assistência técnica em litígios fiscais</li>
+          <li>Análise de autos de infração</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="card-number">05</span>
+        <h2 class="card-title">Perícia<br>Financeira</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Apuração técnica de questões financeiras com emissão de laudos e pareceres para fins judiciais, arbitrais ou empresariais.</p>
+        <ul class="card-items">
+          <li>Apuração de haveres</li>
+          <li>Análise de balanços em disputas societárias</li>
+          <li>Perícia em contratos financeiros</li>
+          <li>Assistência técnica em arbitragem</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="card-number">06</span>
+        <h2 class="card-title">Assessoria<br>Contábil Contínua</h2>
+        <div class="card-divider"></div>
+        <p class="card-description">Acompanhamento contábil recorrente com foco na saúde financeira e na tomada de decisão estratégica do negócio.</p>
+        <ul class="card-items">
+          <li>Escrituração contábil e fiscal</li>
+          <li>Demonstrações financeiras (DRE, BP)</li>
+          <li>Relatórios gerenciais periódicos</li>
+          <li>Suporte em auditorias e fiscalizações</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="closing">
+    <p class="closing-heading">Rigor técnico a serviço do seu crescimento</p>
+    <p class="closing-text">Atendimento personalizado e confidencial para pessoas físicas e jurídicas</p>
+    <div class="closing-line">
+      <span></span><div class="diamond"></div><span></span>
+    </div>
+  </section>
+
+</body>
+</html>
